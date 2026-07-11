@@ -57,27 +57,17 @@ const stories = [
     "Khamoshi mein hi hai sukoon.", "Dard ke aalam mein hoon shoon.", "Yaadon ka silsila khatam na hoga.", "Dard ka koi gam na hoga.",
     "Safar-e-ishq mein main kho gaya.", "Dard se bhara har pal ho gaya.", "Tumhare bina safar adhura hai.", "Dard ka har mod ab pura hai.",
     "Khwabon mein sajayi thi duniya.", "Dard mein hi mili thi duniya."
-];
-
 function nextSlide() {
+    // Text change
     let randomStory = stories[Math.floor(Math.random() * stories.length)];
     document.getElementById("desc").innerText = randomStory;
+    
+    // Image change (Infinite random)
     let randomID = Math.floor(Math.random() * 10000);
-    document.getElementById("bg-container").style.backgroundImage = "url('https://picsum.photos/1600/900?random=" + randomID + "')";
+    document.getElementById("bg-container").style.backgroundImage = 
+        "url('https://picsum.photos/1600/900?random=" + randomID + "')";
 }
 
-
-    function nextSlide() {
-        // Text change
-        let randomStory = stories[Math.floor(Math.random() * stories.length)];
-        document.getElementById("desc").innerText = randomStory;
-        
-        // Image change (Infinite random)
-        let randomID = Math.floor(Math.random() * 10000);
-        document.getElementById("bg-container").style.backgroundImage = 
-            "url('https://picsum.photos/1600/900?random=" + randomID + "')";
-    }
-</script>
 
 </body>
 </html>
