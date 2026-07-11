@@ -1,0 +1,83 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<style>
+    body { margin: 0; padding: 0; font-family: sans-serif; }
+    .slideshow-container { 
+        height: 100vh; display: flex; flex-direction: column; 
+        justify-content: center; align-items: center; text-align: center;
+        background-size: cover; background-position: center; transition: 0.5s;
+        background-image: url('https://picsum.photos/1600/900?random=1');
+    }
+    #content-box { 
+        background: rgba(0, 0, 0, 0.8); padding: 30px; 
+        border: 1px solid #ff4757; border-radius: 15px; color: white;
+    }
+    h1 { margin: 0; color: #ff4757; }
+    button { 
+        margin-top: 20px; background: #ff4757; border: none; 
+        padding: 12px 25px; border-radius: 25px; color: white; cursor: pointer; font-weight: bold;
+    }
+</style>
+</head>
+<body>
+
+<div class="slideshow-container" id="bg-container">
+    <div id="content-box">
+        <h1 id="title">Broken Words</h1>
+        <p id="desc">Har lafz ek dastan hai...</p>
+    </div>
+    <button onclick="nextSlide()">Next Story</button>
+</div>
+
+
+const stories = [
+    "Khamoshi mein chipa hai har dard ka raaz.", "Toote hue dil ka apna hi hai saaz.", "Andheron mein dhoondta hoon manzil.", "Zindagi ke safar mein khoya hai dil.",
+    "Alfaaz bikhre huye hain kahin.", "Dard ko chhupana aasaan nahi.", "Sitaron se pucho mere haal.", "Zindagi ek adhuri si mehfil.",
+    "Khwaab dekhe the kabhi rang-birange.", "Ab toote huye hain naye dhang-e.", "Kalam uthayi dard bayan karne ko.", "Kuch pal guzare yaadon mein bharne ko.",
+    "Tanhaai mein bhi sukoon milta hai.", "Dil mera ab dheere chalta hai.", "Waqt ke saath sab badal gaya.", "Jo tha mera, wo nikal gaya.",
+    "Yaadon ka jharoka khula hai phir.", "Zindagi ke panne bikhre hain ab.", "Har pal ek naya imtehaan hai.", "Mohabbat naam hi dard-e-jaan hai.",
+    "Khamosh chehre ke peeche hai shor.", "Zindagi ka har lamha hai zor.", "Raat ke sannate mein jagta khwaab.", "Dard ke sawalon ka nahi jawab.",
+    "Umeed ki kiran nazar nahi aati.", "Zindagi ki raah raas nahi aati.", "Main apni hi duniya mein gum.", "Dard ke samandar mein main hum.",
+    "Khuda se pucha apna muqaddar.", "Kaha usne, har dard hai samandar.", "Tumhare bina safar hai adhoora.", "Khwaab mera na hua poora.",
+    "Dil ke zakhm ab bhare nahi.", "Yaadein meri ab thame nahi.", "Khamoshi meri pehchan ban gayi.", "Zindagi anjaan pehchan ban gayi.",
+    "Har mod par ek naya dhokha.", "Dard ka koi na koi mauka.", "Alfaaz ab khatam ho chale.", "Dard ke saaye barham ho chale.",
+    "Yaad aati wo guzri hui shaamein.", "Khwaab sajaye jo humne thamein.", "Zindagi ka pal hai ek saza.", "Dard mein hi milta hai maza.",
+    "Khamosh reh kar sab keh diya.", "Jo kehna tha, wahi reh gaya.", "Safar mera hai ab bahut lamba.", "Dard ke safar mein hai khamba.",
+    "Tumhari yaad se dil dhadakta.", "Safar-e-ishq mein main bhatakta.", "Khwabon ki duniya jeena seekha.", "Dard ko seene mein pina seekha.",
+    "Yaadon ka kaarvan rukta nahi.", "Zindagi ka bojh jhukta nahi.", "Har zakhm par namak ka nishaan.", "Dard se bhara mera makaan.",
+    "Khamosh labon par pyaas baaki.", "Yaad tumhari mere paas baaki.", "Safar hai mushkil, raaste band.", "Dard se bhara mera har chhand.",
+    "Zindagi ka mod hai ek sawal.", "Dard ke saaye mein mera haal.", "Khuda se manga tha tujhe maine.", "Dard hi mila mujhko rehne.",
+    "Yaad tumhari zehen mein basi.", "Dard ki dastan mujhse phasi.", "Safar mein milte anjaan log.", "Dard ke maare hum bhi log.",
+    "Khamoshi ka shor badh gaya.", "Dard ka bojh ab chadh gaya.", "Zindagi ke panne par hai dard.", "Kalam meri ho gayi hai sard.",
+    "Tumhari yaadein satati nahi.", "Zindagi mujhe ab lubhati nahi.", "Safar chota, yaadein hain gehri.", "Dard ki dastan ho gayi nehri.",
+    "Khamosh rehna meri adat ban gayi.", "Zindagi ajeeb ibadat ban gayi.", "Yaadon ke saaye mein main kho gaya.", "Dard se bhara har lamha ho gaya.",
+    "Safar-e-zindagi mein akela hoon.", "Dard ke saaye mein khela hoon.", "Tumhe bhoolna meri koshish thi.", "Dard ko paana meri bandish thi.",
+    "Khwabon mein tujhe roz dekhta.", "Zindagi ke panno ko fekta.", "Har mod par ek naya dard.", "Zindagi ka din hai ab mard.",
+    "Khamoshi mein hi hai sukoon.", "Dard ke aalam mein hoon shoon.", "Yaadon ka silsila khatam na hoga.", "Dard ka koi gam na hoga.",
+    "Safar-e-ishq mein main kho gaya.", "Dard se bhara har pal ho gaya.", "Tumhare bina safar adhura hai.", "Dard ka har mod ab pura hai.",
+    "Khwabon mein sajayi thi duniya.", "Dard mein hi mili thi duniya."
+];
+
+function nextSlide() {
+    let randomStory = stories[Math.floor(Math.random() * stories.length)];
+    document.getElementById("desc").innerText = randomStory;
+    let randomID = Math.floor(Math.random() * 10000);
+    document.getElementById("bg-container").style.backgroundImage = "url('https://picsum.photos/1600/900?random=" + randomID + "')";
+}
+
+
+    function nextSlide() {
+        // Text change
+        let randomStory = stories[Math.floor(Math.random() * stories.length)];
+        document.getElementById("desc").innerText = randomStory;
+        
+        // Image change (Infinite random)
+        let randomID = Math.floor(Math.random() * 10000);
+        document.getElementById("bg-container").style.backgroundImage = 
+            "url('https://picsum.photos/1600/900?random=" + randomID + "')";
+    }
+</script>
+
+</body>
+</html>
